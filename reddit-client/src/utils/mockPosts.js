@@ -1,0 +1,34 @@
+export const mockPosts = [
+  {
+    id: 1,
+    title: "React ist großartig",
+    author: "user123",
+    subreddit: "reactjs",
+    upvotes: 123,
+    comments: 45,
+  },
+  {
+    id: 2,
+    title: "Redux erklärt in 5 Minuten",
+    author: "dev42",
+    subreddit: "javascript",
+    upvotes: 98,
+    comments: 12,
+  },
+  {
+    id: 3,
+    title: "Der Fake-Post",
+    author: "007",
+    subreddit: "AI",
+    upvotes: 77,
+    comments: 12,
+  },
+  {
+    id: 4,
+    title: "AI Stiehlt jobs ?!",
+    author: "trolldude",
+    subreddit: "AI",
+    upvotes: 88,
+    comments: 1331,
+  },
+];
