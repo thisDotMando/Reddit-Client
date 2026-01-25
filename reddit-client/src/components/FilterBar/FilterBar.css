@@ -1,0 +1,18 @@
+.filter-bar {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0 1rem 1rem;
+}
+
+.filter-bar button {
+  padding: 0.4rem 0.8rem;
+  border: 1px solid #ccc;
+  background: rgb(150, 26, 158);
+  cursor: pointer;
+}
+
+.filter-bar button.active {
+  background: #0079d3;
+  color: white;
+  border-color: #0079d3;
+}
