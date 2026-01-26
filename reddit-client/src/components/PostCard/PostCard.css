@@ -1,0 +1,22 @@
+.post-card {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 1rem;
+  margin: 0 1rem 1rem;
+}
+
+.post-title {
+  margin: 0 0 0.5rem;
+}
+
+.post-meta {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.post-stats {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}

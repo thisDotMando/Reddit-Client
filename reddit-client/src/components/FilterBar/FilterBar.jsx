@@ -1,10 +1,10 @@
 import "./FilterBar.css";
 import { useState } from "react";
 
-const FILTERS = ["hot", "new", "top"]; //Defining a list of Filtervalues as array pattern
+const FILTERS = ["hot", "new", "top"];      //Defining a list of Filtervalues as array pattern
 
 function FilterBar() {
-    const [activeFilter, setActiveFilter] = useState("hot");  //actual-state is "hot"
+    const [activeFilter, setActiveFilter] = useState("hot");    //actual-state is "hot"
 
     return (
         <div className="filter-bar">
