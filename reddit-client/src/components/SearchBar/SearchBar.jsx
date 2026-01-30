@@ -13,9 +13,9 @@ function SearchBar() {
     return (
             <input
             type="text"
-            placeholder="SearchReddit Posts"
+            placeholder="Search for Reddit Posts..."
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={handleChange}
             className="search-bar"
             />     
     );
