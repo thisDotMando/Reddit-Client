@@ -11,7 +11,11 @@
 
 .post-meta {
   font-size: 0.85rem;
-  color: #555;
+  color: #d7c8c8;
+}
+
+.post-author {
+  color: rgb(167, 219, 219);
 }
 
 .post-stats {

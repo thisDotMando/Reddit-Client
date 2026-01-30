@@ -6,7 +6,8 @@ return (
         <h2 className= "post-title">{title}</h2>
 
         <p className="post-meta">
-            Posted by <span className="post-suthor">{author}</span> in{" "}
+            Posted by <span className="post-author">{author}</span> in{" "}
+            <br></br>
             <span className="post-subreddit">r/{subreddit}</span>
         </p>
         <div className="post-stats">
