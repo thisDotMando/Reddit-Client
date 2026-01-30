@@ -11,7 +11,7 @@ function PostList() {
     const filteredPosts = posts.filter((post) => post.filterType === activeFilter);  // mockPosts must have an filterType
 
     if(filteredPosts.length === 0){
-        return <p className="postlist-empty">No posts available.</p> 
+        return <p className="postlist-empty">No posts available.</p>
     }
 
     return  (

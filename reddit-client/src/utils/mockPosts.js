@@ -6,6 +6,7 @@ export const mockPosts = [
     subreddit: "reactjs",
     upvotes: 123,
     comments: 45,
+    filterType: "top",
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ export const mockPosts = [
     subreddit: "javascript",
     upvotes: 98,
     comments: 12,
+     filterType: "hot",
   },
   {
     id: 3,
@@ -22,6 +24,7 @@ export const mockPosts = [
     subreddit: "AI",
     upvotes: 77,
     comments: 12,
+     filterType: "new",
   },
   {
     id: 4,
@@ -30,5 +33,6 @@ export const mockPosts = [
     subreddit: "AI",
     upvotes: 88,
     comments: 1331,
+     filterType: "top",
   },
 ];
