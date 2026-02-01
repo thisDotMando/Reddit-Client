@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 //import { mockPosts } from "../../utils/mockPosts";
 
-//--------------------------------------------------------------creating 3x Async Actions (pending | fulfilled | rejected)
+//----------------------------------------------------creating 3x Async Actions (pending | fulfilled | rejected)--------------//
+
 export const fetchPosts = createAsyncThunk(
     
     "posts/fetchPosts",
@@ -35,6 +36,8 @@ export const fetchPosts = createAsyncThunk(
 );
 
 //------------------------------------------------------------------------------------------------------//
+
+
 const initialState = {
 posts: [],          //List of Posts as Array 
 status: "idle",     //idle | loading | error

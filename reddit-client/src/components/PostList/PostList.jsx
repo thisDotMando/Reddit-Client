@@ -21,22 +21,24 @@ function PostList() {
     }, [dispatch, activeFilter, searchTerm]);
 
     if(status === "loading") return <p>Lade Posts...</p>;
-    if(status === "failed") return <p>{error}</p>;
-
-    // if(filteredPosts.length === 0){
-    //     return <p className="postlist-empty">No posts available.</p>
-    // }
+    
+    if(status === "failed") {
+        return (
+        <div className="error-state">
+            <p>❌ Fehler beim Laden der Posts</p>
+            <p>{error}</p>
+        <button onClick={() => dispatch(fetchPosts({ filter: activeFilter, searchTerm }))}>
+        🔄 Erneut versuchen
+        </button>
+    </div>
+  );
+}
 
     return  (
         <section className="post-list">
             {posts.map((post) => (
                 <PostCard 
                 key={post.id} {...post}
-                // title={post.title}
-                // author={post.author}
-                // subreddit={post.subreddit}
-                // upvotes={post.upvotes}
-                // comments={post.comments}
                 />
             ))}
         </section>
