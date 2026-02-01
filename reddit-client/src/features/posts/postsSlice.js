@@ -36,6 +36,8 @@ export const fetchPosts = createAsyncThunk(
             subreddit: item.data.subreddit,
             upvotes: item.data.ups,
             comments: item.data.num_comments,
+            image: item.data.preview?.images?.[0]?.source?.url || null,
+            video: item.data.is_video ? item.data.media?.reddit_video?.fallback_url : null,
         })),
         after: data.data.after,
         before: data.data.before,
