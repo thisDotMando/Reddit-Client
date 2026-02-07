@@ -24,14 +24,14 @@
   margin-top: 0.5rem;
   font-size: 0.9rem;
 }
-.post-image {
+ .postCard-image {
   max-width: 100%;
   height: auto;
   margin: 0.5rem 0;
 }
 
-.post-video {
+ .postCard-video {
   width: 100%;
-  max-height: 500px;
+  max-height: 700px;
   margin: 0.5rem 0;
-}
+}  
