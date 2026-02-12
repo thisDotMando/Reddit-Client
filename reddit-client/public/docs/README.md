@@ -49,3 +49,17 @@ Lokaler State wäre hier unübersichtlich und schwer wartbar.
 ## Testing
 - Unit Tests: Jest + React Testing Library
 - End-to-End Tests: Selenium
+
+## 🧪 End-to-End Testing (E2E)
+
+Wir nutzen **Selenium WebDriver** für automatisierte E2E-Tests.
+
+### Voraussetzungen:
+- Lokaler Dev-Server muss laufen (`npm run dev`)
+- Browser (z. B. Chrome) muss installiert sein
+
+### Tests ausführen:
+
+```bash
+npm run e2e         # Testet Home-Seite
+npm run e2e:detail  # Testet Post-Detail-Navigation
