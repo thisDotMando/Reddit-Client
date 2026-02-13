@@ -27,7 +27,10 @@ function PostDetail() {
         ⬅️ Zurück
       </button>
 
-      <h1 className="post-title">{post.title}</h1>
+      <h1 className="post-title" data-testid="post-detail-title">
+        {post.title}
+      </h1>
+
       <p className="post-meta">
         Posted by <strong>{post.author}</strong> in{" "}
         <strong>r/{post.subreddit}</strong>

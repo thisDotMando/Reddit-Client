@@ -13,7 +13,7 @@ function PostCard({
 }) {
   return (
     <Link to={`/post/${id}`} className="post-card-link">
-      <article className="post-card">
+      <article className="post-card" data-testid="post-card" data-e2e-id={id}>
         <h2 className="post-title">{title}</h2>
         <p className="post-meta">
           Posted by <span className="post-author">{author}</span> in{" "}

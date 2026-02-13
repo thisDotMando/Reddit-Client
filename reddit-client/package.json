@@ -11,8 +11,8 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
-    "e2e": "node e2e/tests/home.spec.js"
-
+    "e2e": "node e2e/tests/home.spec.js",
+    "e2e:detail": "node e2e/tests/post-detail.spec.js"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.11.2",
