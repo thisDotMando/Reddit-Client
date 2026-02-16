@@ -26,7 +26,7 @@ function PostList() {
 
   if (status === "failed") {
     return (
-      <div className="error-state">
+      <div className="error-state" data-testid="error-state">
         <p>❌ Fehler beim Laden der Posts</p>
         <p>{error}</p>
         <button
