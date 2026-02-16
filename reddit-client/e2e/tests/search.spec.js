@@ -16,7 +16,7 @@ async function run() {
     await driver.get(APP_URL);
     console.log("🌐 Seite geladen");
 
-    // 1️⃣ Warte auf Search Input
+    // Warte auf Search Input
     const searchInput = await driver.wait(
       until.elementLocated(By.css('[data-testid="search-input"]')),
       10000,
@@ -24,11 +24,11 @@ async function run() {
 
     console.log("🔎 SearchInput gefunden");
 
-    // 2️⃣ Begriff eingeben
+    // Begriff eingeben
     await searchInput.sendKeys("react", Key.RETURN);
     console.log("⌨️ 'react' eingegeben");
 
-    // 3️⃣ Warten bis neue PostCards geladen sind
+    // Warten bis neue PostCards geladen sind
     const posts = await driver.wait(
       until.elementsLocated(By.css('[data-testid="post-card"]')),
       15000,

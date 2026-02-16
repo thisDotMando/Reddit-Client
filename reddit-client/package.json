@@ -13,8 +13,8 @@
     "test:run": "vitest run",
     "e2e": "node e2e/tests/home.spec.js",
     "e2e:detail": "node e2e/tests/post-detail.spec.js",
-    "e2e:search": "node e2e/tests/search.spec.js"
-
+    "e2e:search": "node e2e/tests/search.spec.js",
+    "e2e:filter": "node e2e/tests/filter.spec.js"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.11.2",
