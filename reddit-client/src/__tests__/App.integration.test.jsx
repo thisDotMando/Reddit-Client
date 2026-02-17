@@ -52,7 +52,10 @@ function TestApp({ store, initialEntries = ["/"] }) {
 }
 
 // Beispiel-API-Response mit einem Post; wird für mehrere Tests wiederverwendet.
-function createListingResponse({ id = "abc123", title = "Integration Post" } = {}) {
+function createListingResponse({
+  id = "abc123",
+  title = "Integration Post",
+} = {}) {
   return {
     data: {
       children: [
@@ -77,12 +80,10 @@ function createListingResponse({ id = "abc123", title = "Integration Post" } = {
 
 describe("App Integration - User Flows", () => {
   it("lädt die Startseite und zeigt mindestens einen Post nach erfolgreichem Fetch", async () => {
-    const fetchMock = vi
-      .spyOn(global, "fetch")
-      .mockResolvedValueOnce({
-        ok: true,
-        json: async () => createListingResponse(),
-      });
+    const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValueOnce({
+      ok: true,
+      json: async () => createListingResponse(),
+    });
 
     const store = createIntegrationStore();
 
@@ -98,7 +99,7 @@ describe("App Integration - User Flows", () => {
 
   it("ändert den Filter und ruft dadurch neue Posts ab", async () => {
     const fetchMock = vi
-      .spyOn(global, "fetch")
+      .spyOn(globalThis, "fetch")
       // erster Aufruf: initiale Posts
       .mockResolvedValueOnce({
         ok: true,
@@ -133,7 +134,7 @@ describe("App Integration - User Flows", () => {
 
   it("setzt einen Suchbegriff und löst dadurch einen neuen Fetch mit Such-URL aus", async () => {
     const fetchMock = vi
-      .spyOn(global, "fetch")
+      .spyOn(globalThis, "fetch")
       // initialer Aufruf ohne Suchbegriff
       .mockResolvedValueOnce({
         ok: true,
@@ -172,13 +173,11 @@ describe("App Integration - User Flows", () => {
 
     // Prüfen, dass der letzte Aufruf eine Search-URL verwendet.
     const lastCall = fetchMock.mock.calls.at(-1);
-    expect(lastCall[0]).toContain(
-      "https://www.reddit.com/search.json?q=react&limit=10",
-    );
+    expect(lastCall[0]).toContain("/api/search.json?q=react&limit=10");
   });
 
   it("öffnet die Detailansicht, wenn ein Post angeklickt wird", async () => {
-    vi.spyOn(global, "fetch").mockResolvedValue({
+    vi.spyOn(globalThis, "fetch").mockResolvedValue({
       ok: true,
       json: async () => createListingResponse(),
     });
@@ -203,4 +202,3 @@ import { render } from "@testing-library/react";
 function renderWithIntegration(ui) {
   return render(ui);
 }
-

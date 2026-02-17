@@ -1,11 +1,7 @@
-// Tests für den postsSlice inklusive des asynchronen Thunks fetchPosts.
-// Ziel: Sicherstellen, dass API-Aufrufe, Daten-Mapping und Status-Übergänge korrekt funktionieren.
-
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import { describe, it, expect, vi, afterEach } from "vitest";
 import { configureStore } from "@reduxjs/toolkit";
 import postsReducer, { fetchPosts } from "./postsSlice";
 
-// Hilfsfunktion: Erstellt einen isolierten Store nur mit dem posts-Reducer.
 function createPostsTestStore(preloadedState) {
   return configureStore({
     reducer: {
@@ -16,8 +12,6 @@ function createPostsTestStore(preloadedState) {
 }
 
 describe("postsSlice - fetchPosts Thunk", () => {
-  // Nach jedem Test werden alle Mocks zurückgesetzt,
-  // damit Tests unabhängig voneinander bleiben.
   afterEach(() => {
     vi.restoreAllMocks();
   });
@@ -30,12 +24,10 @@ describe("postsSlice - fetchPosts Thunk", () => {
       },
     };
 
-    const fetchMock = vi
-      .spyOn(global, "fetch")
-      .mockResolvedValueOnce({
-        ok: true,
-        json: async () => fakeResponse,
-      });
+    const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValueOnce({
+      ok: true,
+      json: async () => fakeResponse,
+    });
 
     const store = createPostsTestStore();
 
@@ -43,9 +35,7 @@ describe("postsSlice - fetchPosts Thunk", () => {
       fetchPosts({ filter: "r/reactjs", searchTerm: "", after: null }),
     );
 
-    expect(fetchMock).toHaveBeenCalledWith(
-      "https://www.reddit.com/r/reactjs.json?limit=10",
-    );
+    expect(fetchMock).toHaveBeenCalledWith("/api/r/reactjs.json?limit=10");
   });
 
   it("baut die richtige URL mit searchTerm", async () => {
@@ -56,12 +46,10 @@ describe("postsSlice - fetchPosts Thunk", () => {
       },
     };
 
-    const fetchMock = vi
-      .spyOn(global, "fetch")
-      .mockResolvedValueOnce({
-        ok: true,
-        json: async () => fakeResponse,
-      });
+    const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValueOnce({
+      ok: true,
+      json: async () => fakeResponse,
+    });
 
     const store = createPostsTestStore();
 
@@ -69,9 +57,7 @@ describe("postsSlice - fetchPosts Thunk", () => {
       fetchPosts({ filter: "hot", searchTerm: "react", after: null }),
     );
 
-    expect(fetchMock).toHaveBeenCalledWith(
-      "https://www.reddit.com/search.json?q=react&limit=10",
-    );
+    expect(fetchMock).toHaveBeenCalledWith("/api/search.json?q=react&limit=10");
   });
 
   it("hängt den after-Parameter an die URL an, wenn vorhanden", async () => {
@@ -82,12 +68,10 @@ describe("postsSlice - fetchPosts Thunk", () => {
       },
     };
 
-    const fetchMock = vi
-      .spyOn(global, "fetch")
-      .mockResolvedValueOnce({
-        ok: true,
-        json: async () => fakeResponse,
-      });
+    const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValueOnce({
+      ok: true,
+      json: async () => fakeResponse,
+    });
 
     const store = createPostsTestStore();
 
@@ -100,13 +84,11 @@ describe("postsSlice - fetchPosts Thunk", () => {
     );
 
     expect(fetchMock).toHaveBeenCalledWith(
-      "https://www.reddit.com/hot.json?limit=10&after=t3_123",
+      "/api/hot.json?limit=10&after=t3_123",
     );
   });
 
-  it("mappt die API-Response korrekt auf das interne Post-Format", async () => {
-    // Hier simulieren wir eine Reddit-Response mit Bild- und Videodaten,
-    // um sicherzustellen, dass die Mapping-Logik funktioniert.
+  it("mappt die API-Response korrekt", async () => {
     const fakeResponse = {
       data: {
         children: [
@@ -140,7 +122,7 @@ describe("postsSlice - fetchPosts Thunk", () => {
       },
     };
 
-    vi.spyOn(global, "fetch").mockResolvedValueOnce({
+    vi.spyOn(globalThis, "fetch").mockResolvedValueOnce({
       ok: true,
       json: async () => fakeResponse,
     });
@@ -157,24 +139,20 @@ describe("postsSlice - fetchPosts Thunk", () => {
     expect(state.after).toBe("t3_after");
     expect(state.posts).toHaveLength(1);
 
-    const post = state.posts[0];
-
-    // Prüfen, ob alle relevanten Felder korrekt übernommen wurden.
-    expect(post).toEqual({
+    expect(state.posts[0]).toEqual({
       id: "abc123",
       title: "Ein Test-Post",
       author: "testuser",
       subreddit: "reactjs",
       upvotes: 42,
       comments: 7,
-      // &amp; wurde in ein einfaches & umgewandelt
       image: "https://example.com/image&test.jpg",
       video: "https://example.com/video.mp4",
     });
   });
 
-  it("setzt Status auf failed und speichert die Fehlermeldung, wenn die API nicht ok ist", async () => {
-    vi.spyOn(global, "fetch").mockResolvedValueOnce({
+  it("setzt Status auf failed bei Fehler", async () => {
+    vi.spyOn(globalThis, "fetch").mockResolvedValueOnce({
       ok: false,
     });
 
@@ -204,4 +182,3 @@ describe("postsSlice - initialer State", () => {
     });
   });
 });
-
