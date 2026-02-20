@@ -25,9 +25,10 @@
   font-size: 0.9rem;
 }
  .postCard-image {
-  max-width: 100%;
+    width: 100%;
   height: auto;
-  margin: 0.5rem 0;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
 }
 
  .postCard-video {

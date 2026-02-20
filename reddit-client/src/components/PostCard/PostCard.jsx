@@ -31,7 +31,12 @@ function PostCard({
             Your browser does not support the video tag.
           </video>
         ) : image ? (
-          <img src={image} alt={title} className="postCard-image" />
+          <img
+            src={image}
+            alt={title}
+            loading="lazy"
+            className="postCard-image"
+          />
         ) : null}
       </article>
     </Link>
